@@ -3,100 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Freddy Nails Digital Hub</title>
+    <title>E-commerce Nail Art Store</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        h1, h2 { color: #333; }
-        .product-ideas { margin: 20px 0; }
-        .category { margin: 10px 0; }
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: #333;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .product {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .signup {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .success {
+            color: green;
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <h1>Welcome to Freddy Nails Digital Hub</h1>
-
-    <h2>Price List Generator</h2>
-    <form id="priceListForm">
-        <label for="service">Service Name:</label>
-        <input type="text" id="service" required>
-        <label for="price">Price:</label>
-        <input type="number" id="price" required>
-        <button type="submit">Add to Price List</button>
-    </form>
-    <ul id="priceList"></ul>
-
-    <h2>Caption Generator</h2>
-    <div id="captionGenerator">
-        <div class="category">
-            <h3>Category 1</h3>
-            <button onclick="generateCaption(1)">Generate Caption</button>
-            <p id="caption1"></p>
-        </div>
-        <div class="category">
-            <h3>Category 2</h3>
-            <button onclick="generateCaption(2)">Generate Caption</button>
-            <p id="caption2"></p>
-        </div>
-        <!-- Add four more categories here -->
+    <h1>Welcome to Our E-commerce Nail Art Store</h1>
+    <div class="product">
+        <h2>Nail Art Design 1</h2>
+        <p>Price: $10</p>
+        <button onclick="buyProduct('product1')">Buy Now</button>
     </div>
-
-    <h2>Booking Scripts</h2>
-    <p>Contact us to book an appointment!</p>
-    <form id="bookingForm">
-        <label for="customerName">Your Name:</label>
-        <input type="text" id="customerName" required>
-        <label for="appointmentDate">Appointment Date:</label>
-        <input type="date" id="appointmentDate" required>
-        <button type="submit">Book Appointment</button>
-    </form>
-
-    <h2>Sales Copy Generator</h2>
-    <button onclick="generateSalesCopy()">Generate Sales Copy</button>
-    <p id="salesCopy"></p>
-
-    <h2>Sellable Product Ideas</h2>
-    <div class="product-ideas">
-        <p>1. Acrylic Nail Kits</p>
-        <p>2. Gel Nail Polish Sets</p>
-        <p>3. Nail Art Tools Collection</p>
-        <p>4. Manicure and Pedicure Packages</p>
-        <p>5. Nail Care Products</p>
-        <p>6. Custom Nail Designs Services</p>
+    <div class="product">
+        <h2>Nail Art Design 2</h2>
+        <p>Price: $12</p>
+        <button onclick="buyProduct('product2')">Buy Now</button>
+    </div>
+    <div class="product">
+        <h2>Nail Art Design 3</h2>
+        <p>Price: $15</p>
+        <button onclick="buyProduct('product3')">Buy Now</button>
+    </div>
+    <div class="product">
+        <h2>Nail Art Design 4</h2>
+        <p>Price: $8</p>
+        <button onclick="buyProduct('product4')">Buy Now</button>
+    </div>
+    <div class="product">
+        <h2>Nail Art Design 5</h2>
+        <p>Price: $9</p>
+        <button onclick="buyProduct('product5')">Buy Now</button>
+    </div>
+    <div class="product">
+        <h2>Nail Art Design 6</h2>
+        <p>Price: $11</p>
+        <button onclick="buyProduct('product6')">Buy Now</button>
+    </div>
+    <div class="signup">
+        <h2>Sign Up for Exclusive Offers!</h2>
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <button onclick="subscribe()">Subscribe</button>
+        <p class="success" id="success-message">Thank you for subscribing!</p>
     </div>
 
     <script>
-        const priceList = [];
-
-        document.getElementById('priceListForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const service = document.getElementById('service').value;
-            const price = document.getElementById('price').value;
-            priceList.push(`${service}: $${price}`);
-            updatePriceList();
-        });
-
-        function updatePriceList() {
-            const priceListUl = document.getElementById('priceList');
-            priceListUl.innerHTML = '';
-            priceList.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = item;
-                priceListUl.appendChild(li);
-            });
+        function buyProduct(product) {
+            // Placeholder for Gumroad button functionality
+            alert('Redirecting to Gumroad for ' + product);
         }
 
-        function generateCaption(category) {
-            const captions = [
-                ["Captivating nails for every occasion!", "Get noticed with our nail art!", "Nail the look you desire!"],
-                ["Nail art that speaks!", "Express your style!", "Impress with your nails!"],
-                // Add additional captions for other categories
-            ];
-            const randomIndex = Math.floor(Math.random() * captions[category - 1].length);
-            document.getElementById(`caption${category}`).textContent = captions[category - 1][randomIndex];
-        }
-
-        function generateSalesCopy() {
-            const copy = "Transform your nails with our premium products! Quality and style await you.";
-            document.getElementById('salesCopy').textContent = copy;
+        function subscribe() {
+            let emailInput = document.getElementById('email');
+            if (emailInput.value) {
+                document.getElementById('success-message').style.display = 'block';
+                emailInput.value = '';
+            }
         }
     </script>
 </body>
